@@ -1,0 +1,22 @@
+{
+  "name": "bootstrapclassesrecommender",
+  "displayName": "bootstrapclassesrecommender",
+  "repository" : "https://github.com/codingbeast/bootstrapclassesrecommender",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "codingbeast",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "html",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
