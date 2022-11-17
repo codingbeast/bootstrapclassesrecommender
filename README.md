@@ -1,6 +1,9 @@
 # bootstrapclassesrecommender
 
-This extenation is compiled all the bootstrap 5 classes in one file and whenever you write the code in html file it will recommend you bootstrap classes names.
+This extenation is compiled all the bootstrap 5 classes in one file and whenever you write the code in html file it will recommend you bootstrap classes names.  
+
+#### Download
+[click here to download](https://marketplace.visualstudio.com/items?itemName=codingbeast.bootstrapclassesrecommender)
 
 ## Requirements
 
