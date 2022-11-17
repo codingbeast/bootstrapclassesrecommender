@@ -5,9 +5,29 @@ import re
 from nltk.tokenize import sent_tokenize, word_tokenize
 import shutil
 import json
+import requests
+from clint.textui import progress
 
+res = requests.get("https://raw.githubusercontent.com/twbs/bootstrap/main/README.md")
+link = re.findall("[Download the latest release]((.*?))\n-",res.text)
+finalLink =''
+for i in link:
+    if "https://github.com/twbs/bootstrap/archive/" in i[1]:
+        finalLink = re.search("(?P<url>https?://[^\s]+)", i[1]).group("url")[:-1]
+        
+print("downloading from ",finalLink)
+version = finalLink.split("/v")[-1].split(".zip")[0]
+filename = "bootstrap-{}".format(version)
+
+r = requests.get(finalLink, stream=True)
+with open(filename + ".zip", 'wb') as f:
+    total_length = int(r.headers.get('content-length'))
+    for chunk in progress.bar(r.iter_content(chunk_size=1024), expected_size=(total_length/1024) + 1): 
+        if chunk:
+            f.write(chunk)
+            f.flush()
 #unzip the file 
-filename = "bootstrap-5.0.2"
+
 unzipPath = os.getcwd()
 with ZipFile(filename + ".zip", 'r') as zObject:
     zObject.extractall(unzipPath)
